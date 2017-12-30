@@ -1,0 +1,13 @@
+type User @model {
+  id: ID! @isUnique
+  name: String
+  webhooks: String
+  projects: [Project!]! @relation(name: "UserProjects")
+}
+
+type Project @model {
+  id: ID! @isUnique
+  name: String!
+  owner: User! @relation(name: "UserProjects")
+  isPublished: Boolean @defaultValue(value: "false")
+}

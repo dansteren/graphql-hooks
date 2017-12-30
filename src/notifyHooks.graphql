@@ -1,0 +1,20 @@
+subscription {
+  Project(filter: {
+    mutation_in: [UPDATED],
+    node: {
+      isPublished_not: false
+      owner: {
+        webhooks_not: null
+      }
+    }
+  }) {
+    node {
+      id,
+      name,
+      owner {
+        webhooks
+      }
+      isPublished
+    }
+  }
+}
